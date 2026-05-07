@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  forecasting-api:
+    build: .
+    ports:
+      - "8004:8004"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    environment:
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    command: python simple_api.py
